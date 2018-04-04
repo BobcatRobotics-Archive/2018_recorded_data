@@ -1,0 +1,57 @@
+
+Robot_start:
+
+ Center ----> Switch_pos:
+                 Left  ----------------------------------> center2left.txt
+                 Right ----------------------------------> center2right.txt
+                 NGD   ----------------------------------> center2right_simple.txt
+
+ Left   ----> Scale_pos:
+                 Left  ----> Switch_pos:
+                               Left  --------------------> left2scale.txt
+                               Right --------------------> left2scale_noswitch.txt
+                                                        
+                 Right ----> Cross:                     
+                               No  ------> Switch_pos:
+                                              Left  -----> left2scale_short_switch.txt
+                                              Right -----> left2scale_short.txt
+                               Yes ----------------------> left2scaleright.txt
+                 NGD   ----------------------------------> left2scale_short.txt
+
+ Right  ----> Scale_pos:
+                 Right ----> Switch_pos:
+                               Right --------------------> right2scale.txt
+                               Left  --------------------> right2scale_noswitch.txt
+                                                        
+                 Left  ----> Cross:                     
+                               No  ------> Switch_pos:
+                                              Left  -----> right2scale_short_switch.txt
+                                              Right -----> right2scale_short.txt
+                               Yes ----------------------> right2scaleleft.txt
+                 NGD   ----------------------------------> right2scale_short.txt
+
+File Descriptions:
+center2left/center2right: Drive to left/right switch, drop off cube, turn and pickup
+                          second cube and score in switch, then roll out to side of
+                          switch for start of teleop.
+center2right_simple: Drive to right switch *do not* eject cube and stop.  This file
+                     is created by shortening center2right.
+left2scale: Drive to scale backwards, turn and score cube in scale. Retract four bar
+            and elevator, and wait for teleop. (Originally attempted to score cube
+            on scale and switch if both on left, but uncertainty in robot position
+            after scoring first cube on scale makes this too risky -- could hit
+            scale or guard rail, etc.)
+left2scale_noswitch : Now identical to left2scale. (Originally a a modification of
+                      left2scale that didn't try and score on switch.)
+left2scaleright: If robot starts on left, scale comes up on right and cross is
+                 enabled, then drive around switch and score cube on scale, then
+                 retract four bar and elevator, turn and wait for teleop.
+left2scale_short_switch: If robot starts on left, scale comes up on right and cross
+                         is *not* enabled, and switch *is* on left, then drive
+                         forward, turn and score cube in switch, turn and drive and
+                         turn around to pickup second cube and wait for auto.
+left2scale_short: If robot starts on left, and scale is on right, and switch is on
+                  right, and cross is not enabled, then just drive forward and wait
+                  with cube for teleop.  This file is also used if robot starts on
+                  left, and robot has No Game Data (NGD)
+right2scale...: Similar to left2scale files but robot starts on right.

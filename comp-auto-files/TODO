@@ -1,0 +1,74 @@
+For xxxxxxxx.txt files:
+
+  Created center2right_simple.txt (and center2right_simple.speeds.txt)
+  from the center2right.txt file by cutting out all data past 2.5 seconds,
+  putting the speed commands to 0.0 for the last two passes to have the
+  robot stop trying to drive and then putting in the appropriate end
+  of data indication lines.
+
+  Created left2scale_short.txt (and left2scale_short.speeds.txt) from
+  the left2scale.txt file by cutting out all data past 2 seconds and
+  putting the speed commands to 0.0 for the last two passes to have the
+  robot stop driving (will coast a few feet).  And putting in the
+  appropriate end of data indication lines.
+
+  Created right2scale_short.txt (and right2scale_short.speeds.txt) from
+  the right2scale.txt file by cutting out all data past 2 seconds and
+  putting the speed commands to 0.0 for the last two passes to have the
+  robot stop driving (will coast a few feet).  And putting in the
+  appropriate end of data indication lines.
+
+  Created right2scale_noswitch.txt (and right2scale_noswitch.speeds.txt)
+  by copying right2scale.txt with no changes.
+
+  Should review files, and see if we can remove any dead time after the
+  recording starts, but before the robot starts moving (since the faster
+  we score the cube the longer we'll have the switch or scale).
+  Note, that we need to update the time column if we make this change.
+
+     center2right             -- looks like about 0.3 seconds at beginning
+     center2left              -- looks like about 0.5 seconds at beginning
+     center2right_simple      -- no change needed since not scoring a cube
+
+     left2scale               -- looks like about 0.1 seconds at beginning
+     left2scale_noswitch      -- same as left2scale above (about 0.1 secs)
+     left2scale_short_switch  -- looks like about 0.5 seconds at beginning
+     left2scaleright          -- looks like about 0.56 seconds at beginning
+     left2scale_short         -- no change needed since not scoring a cube
+
+     right2scale              -- looks like about 0.23 seconds at beginning
+     right2scale_noswitch     -- same as right2scale above (about 0.23 secs)
+     right2scale_short        -- no change needed since not scoring a cube
+
+     right2scale_short_switch -- not yet recorded.
+     right2scaleleft          -- not yet recorded.
+
+In xxxxxxxx.speeds.txt files from 195 practice on April 2nd:
+
+  The right encoder is wired such that it reads backwards (that is the right
+  distance increases when the robot moves backwards, and decreases when the
+  robot moves forwards).  The left encoder is wired to match the robot motion.
+  This means the right distance and right velocity should be multiplied by -1.
+
+  The initial left distance and right distance are not zero -- this is
+  because the robot is moved around by hand to position the robot, and
+  the encoders are not reset at the beginning of teleop init, so during
+  a recording they don't have to start at zero.
+
+FileEditor & PathAnimator Changes:
+
+  Include option to fix issues with files that have encoder data with
+  errors (wrong encoder selected, or encoder wired backward, etc.)?
+
+  Include options to zero distances at beginning of file (since we
+  don't want to init encoders to zero in teleop init), and it would be
+  nice to have distance plots start at zero.
+
+Robot Code Changes:
+
+  Remove line of code which writes each playback command to the rio thread
+  log as it makes this file grow quickly.
+
+  Update the documentation in the lib/Commands.java file to match the codes
+  used in the code (there is no CU, now CS and CA).
+
