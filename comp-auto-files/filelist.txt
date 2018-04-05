@@ -7,10 +7,11 @@ Robot_start:
                  NGD   ----------------------------------> center2right_simple.txt
 
  Left   ----> Scale_pos:
-                 Left  ----> Switch_pos:
-                               Left  --------------------> left2scale.txt
-                               Right --------------------> left2scale_noswitch.txt
-                                                        
+                 Left  ----> 2cube:
+                               No  ------> Switch_pos:
+                                              Left  -----> left2scale.txt
+                                              Right -----> left2scale_noswitch.txt
+                               Yes ----------------------> left2scale2cube.txt
                  Right ----> Cross:                     
                                No  ------> Switch_pos:
                                               Left  -----> left2scale_short_switch.txt
@@ -19,10 +20,11 @@ Robot_start:
                  NGD   ----------------------------------> left2scale_short.txt
 
  Right  ----> Scale_pos:
-                 Right ----> Switch_pos:
-                               Right --------------------> right2scale.txt
-                               Left  --------------------> right2scale_noswitch.txt
-                                                        
+                 Right ----> 2cube:
+                               No  ------> Switch_pos:
+                                              Right -----> right2scale.txt
+                                              Left  -----> right2scale_noswitch.txt
+                               Yes ----------------------> right2scale2cube.txt                        
                  Left  ----> Cross:                     
                                No  ------> Switch_pos:
                                               Left  -----> right2scale_short_switch.txt
@@ -43,6 +45,9 @@ left2scale: Drive to scale backwards, turn and score cube in scale. Retract four
             scale or guard rail, etc.)
 left2scale_noswitch : Now identical to left2scale. (Originally a a modification of
                       left2scale that didn't try and score on switch.)
+left2scale2cube: Drive to scale backwards, turn and score cube in scale, taking care
+                 to stay short of cable cover. Retract four bar and elevator, then
+                 turn and pickup second cube and score in scale.
 left2scaleright: If robot starts on left, scale comes up on right and cross is
                  enabled, then drive around switch and score cube on scale, then
                  retract four bar and elevator, turn and wait for teleop.
