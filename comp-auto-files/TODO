@@ -40,10 +40,10 @@ For xxxxxxxx.txt files:
      right2scale_noswitch     -- same as right2scale above (about 0.23 secs)
      right2scale_short        -- no change needed since not scoring a cube
 
-     left2scale2cube          -- not yet recorded.
-     right2scale2cube         -- not yet recorded.
-     right2scale_short_switch -- not yet recorded.
-     right2scaleleft          -- not yet recorded.
+     left2scale2cube          -- same as left2scale for now.
+     right2scale2cube         -- same as right2scale for now.
+     right2scale_short_switch -- looks like about 0.7 seconds at beginning
+     right2scaleleft          -- about 0.58 seconds at the beginning
 
 In xxxxxxxx.speeds.txt files from 195 practice on April 2nd:
 
@@ -51,6 +51,10 @@ In xxxxxxxx.speeds.txt files from 195 practice on April 2nd:
   distance increases when the robot moves backwards, and decreases when the
   robot moves forwards).  The left encoder is wired to match the robot motion.
   This means the right distance and right velocity should be multiplied by -1.
+  (Note, this was fixed in code vi changing the sense of the greyhill on the )
+  (      right side before recording on 04-05, so files from 04-05 do not    )
+  (      need this change.                                                   )
+  
 
   The initial left distance and right distance are not zero -- this is
   because the robot is moved around by hand to position the robot, and
@@ -69,18 +73,18 @@ FileEditor & PathAnimator Changes:
 Robot Code Changes:
 
   Add logic to put 2cube yes/no chooser on smartdashboard and reflect choice
-  back to dashboard (just like other choosers have).
+  back to dashboard (just like other choosers have).  DONE
   
   Add code to filerecorder chooser in robot.java to allow user to select
-  left2scale2cube and right2scale2cube for recording.
+  left2scale2cube and right2scale2cube for recording.  DONE
   
   Update determineauto() function to accept 2cube input, and choose new file
-  as appropriate.
+  as appropriate.  DONE
   
   Any other changes to support the 2cube option?
   
   Remove line of code which writes each playback command to the rio thread
-  log as it makes this file grow quickly.
+  log as it makes this file grow quickly.  DONE
 
   Update the documentation in the lib/Commands.java file to match the codes
   used in the code (there is no CU, now CS and CA).
