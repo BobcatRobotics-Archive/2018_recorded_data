@@ -1,11 +1,12 @@
-These files are the files currently on the RoboRIO on the competiton bot at the
-end of hartford with the tweaks made over the competition.
+These files are the files first set of mods to files that were used at
+the Hartford competition.
 
 These files are not consistent between the xxxxxx.txt and xxxxxx.speeds.txt
 
-These files don't have the shortened left2scale_short.txt file made in the
-championship match that was copied over the other left2scale files so that
-we wouldn't interfere with 195 crossing over if the scale was on the left.
+These files have the shortened left2scale_short.txt file made in the
+championship match (but compare after pulling from rio).
+
+And changes to the left2scale_short_switch that Dave B. proposed in email.
 
 Differences from the hartford_auto_files_raw directory:
 
