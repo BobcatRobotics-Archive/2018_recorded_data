@@ -4,6 +4,10 @@ These files are not consistent between the xxxxxx.txt and xxxxxx.speeds.txt
 
 Notable changes made during champs were:
 
+   center2right.txt -- adjusted with a little more right power to have more
+                       turn to hit switch more in center, rather than near
+                       edge of switch.
+
    left2scale.txt   -- adjusted to not turn back to the switch so much,
                        and in-fact to turn toward the middle of the field
                        some.  Also elevator power adjusted to keep elevator
